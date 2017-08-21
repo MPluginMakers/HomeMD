@@ -1,4 +1,4 @@
-main: src\OurHome\Main.php
+main: OurHome\Main
 name: OurHome
 version: 0.0.1
 author: MPluginMakers
