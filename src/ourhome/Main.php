@@ -1,5 +1,5 @@
 <?php
-namespace src\OurHome;
+namespace src\ourhome;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
