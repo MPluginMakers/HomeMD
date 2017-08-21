@@ -1,9 +1,9 @@
-name: OurHome
 main: src\OurHome\Main.php
+name: OurHome
 version: 0.0.1
+author: MPluginMakers
 api: [3.0.0-ALPHA7]
 load: POSTWORLD
-author: MPluginMakers
 commands:
   home:
     description: "Teleports you to your home."
