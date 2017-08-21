@@ -1,0 +1,75 @@
+name: OurHome
+main: revivalpmmp\pureentities\PureEntities
+version: 0.1.0
+api: [3.0.0-ALPHA7]
+
+load: STARTUP
+authors: ["Dogeee", "MPluginMakers"]
+description: Homes for PMMP
+website: https://github.com/MPluginMakers/OurHome
+
+commands:
+  home:
+    description: Takes you to your home
+    usage: "/home <name>"
+    permission: ourhome.command.home
+  sethome:
+    description: Removes all entities from the current level
+    usage: "/sethome <name>"
+    permission: ourhome.command.sethome
+  delhome:
+    description: Abandons your home
+	usage: "/delhome <name>"
+	permission: ourhome.command.delhome
+
+permissions:
+ ourhome:
+    default: op
+    description: "Allows access to all OurHome features."
+    children:
+      ourhome.command:
+        default: op
+        description: "Allows access to all OurHome commands."
+        children:
+          ourhome.command.home:
+            default: true
+            description: "Allows access to the home command."
+          ourhome.command.sethome:
+            default: true
+            description: "Allows access to the sethome command."
+          ourhome.command.delhome:
+            default: true
+            description: "Allows access to the delhome command."
+      ourhome.home:
+        default: op
+        description: "Allows access to all home features."
+        children:
+          ourhome.home.self:
+            default: true
+            description: "Allows access to your own home."
+          ourhome.home.others:
+            default: op
+            description: "Allows access to other's homes."
+          ourhome.home.touch:
+            default: true
+            description: "Allows access to the touch home feature."
+      ourhome.sethome:
+        default: op
+        description: "Allows access to all sethome features."
+        children:
+          ourhome.sethome.self:
+            default: true
+            description: "Allows access to setting your own home."
+          ourhome.sethome.others:
+            default: op
+            description: "Allows access to setting other's homes."
+      ourhome.delhome:
+        default: op
+        description: "Allows access to all delhome features."
+        children:
+          ourhome.delhome.self:
+            default: true
+            description: "Allows access to delete your own home."
+          ourhome.delhome.others:
+            default: op
+            description: "Allows access to delete other's homes."
