@@ -1,27 +1,22 @@
 name: OurHome
 main: MPluginMakers\OurHome\main
-version: 0.1.0
+version: 0.0.1
 api: [3.0.0-ALPHA7]
-
-load: STARTUP
-authors: ["Dogeee", "MPluginMakers"]
-description: Homes for PMMP
-website: https://github.com/MPluginMakers/OurHome
-
+load: POSTWORLD
+author: MPluginMakers
 commands:
   home:
-    description: Takes you to your home
-    usage: "/home <name>"
+    description: "Teleports you to your home."
+    usage: "/home"
     permission: ourhome.command.home
   sethome:
-    description: Removes all entities from the current level
-    usage: "/sethome <name>"
+    description: "Sets your home."
+    usage: "/sethome"
     permission: ourhome.command.sethome
   delhome:
-    description: Abandons your home
-	usage: "/delhome <name>"
-	permission: ourhome.command.delhome
-
+    description: "Deletes your home."
+    usage: "/delhome"
+    permission: ourhome.command.delhome
 permissions:
  ourhome:
     default: op
