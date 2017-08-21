@@ -1,5 +1,5 @@
 name: OurHome
-main: revivalpmmp\pureentities\PureEntities
+main: MPluginMakers\OurHome\main
 version: 0.1.0
 api: [3.0.0-ALPHA7]
 
