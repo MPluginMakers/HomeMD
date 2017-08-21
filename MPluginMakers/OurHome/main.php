@@ -1,5 +1,5 @@
 <?php
-namespace ZHEKA55\MD_HOME;
+namespace MPluginMakers\OurHome;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
@@ -11,10 +11,10 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\math\Vector3;
 class Main extends PluginBase implements Listener {
   public function onLoad() {
-    $this->getLogger()->info(TextFormat::YELLOW . "Loading TouchHome v4.1 by ZHEKA55...");
+    $this->getLogger()->info(TextFormat::YELLOW . "Loading OurHome by MPluginMakers");
   }
   public function onEnable() {
-    $this->getLogger()->info(TextFormat::YELLOW . "Enabling TouchHome...");
+    $this->getLogger()->info(TextFormat::YELLOW . "Enabling OurHome... Any errors? Contact us!");
     $this->getServer()->getPluginManager()->registerEvents($this,$this);
     if(!file_exists($this->getDataFolder() . "config.yml")) {
       @mkdir($this->getDataFolder());
@@ -26,7 +26,7 @@ class Main extends PluginBase implements Listener {
   public function onCommand(CommandSender $p,Command $cmd,$label,array $args) {
     if(strtolower($cmd->getName()) == "home" && $p instanceof Player) {
       if(isset($args[0])) {
-        if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.home") || $p->hasPermission("touchhome.home.others")) {
+        if($p->hasPermission("ourhome") || $p->hasPermission("ourhome.home") || $p->hasPermission("ourhome.home.others")) {
           if($this->getServer()->getPlayer($args[0]) instanceof Player && $this->homeExists($this->getServer()->getPlayer($args[0])->getName())) {
             $this->home($this->getServer()->getPlayer($args[0])->getName(),$p);
           } else if($this->homeExists($args[0])) {
@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener {
           $p->sendMessage("ОШИБОЧКА.");
         }
       } else {
-        if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.home") || $p->hasPermission("touchhome.home.self")) {
+        if($p->hasPermission("ourhome") || $p->hasPermission("ourhome.home") || $p->hasPermission("ourhome.home.self")) {
           $this->home($p->getName(),$p);
         } else {
           $p->sendMessage("ОШИБОЧКА.");
@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener {
       }
     } else if(strtolower($cmd->getName()) == "sethome" && $p instanceof Player) {
       if(isset($args[0])) {
-        if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.sethome") || $p->hasPermission("touchhome.sethome.others")) {
+        if($p->hasPermission("ourhome") || $p->hasPermission("ourhome.sethome") || $p->hasPermission("ourhome.sethome.others")) {
           if($this->getServer()->getPlayer($args[0]) instanceof Player) {
             $this->sethome($this->getServer()->getPlayer($args[0])->getName(),$p);
           } else {
@@ -56,7 +56,7 @@ class Main extends PluginBase implements Listener {
           $p->sendMessage("ОШИБОЧКА.");
         }
       } else {
-        if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.sethome") || $p->hasPermission("touchhome.sethome.self")) {
+        if($p->hasPermission("ourhome") || $p->hasPermission("ourhome.sethome") || $p->hasPermission("ourhome.sethome.self")) {
           $this->sethome($p->getName(),$p);
         } else {
           $p->sendMessage("ОШИБОЧКА.");
@@ -64,14 +64,14 @@ class Main extends PluginBase implements Listener {
       }
     } else if(strtolower($cmd->getName()) == "delhome") {
       if(!isset($args[0]) && $p instanceof Player) {
-        if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.delhome") || $p->hasPermission("touchhome.delhome.self")) {
+        if($p->hasPermission("touchhome") || $p->hasPermission("ourhome.delhome") || $p->hasPermission("ourhome.delhome.self")) {
           $this->delhome($p->getName(),$p);
         } else {
           $p->sendMessage("You don't have permission to do this.");
         }
       } else {
         if(($p instanceof Player) || isset($args[0])) {
-          if($p->hasPermission("touchhome") || $p->hasPermission("touchhome.delhome") || $p->hasPermission("touchhome.delhome.others")) {
+          if($p->hasPermission("ourhome") || $p->hasPermission("ourhome.delhome") || $p->hasPermission("ourhome.delhome.others")) {
             if($this->getServer()->getPlayer($args[0]) instanceof Player) {
               $this->delhome($this->getServer()->getPlayer($args[0])->getName(),$p);
             } else {
@@ -98,7 +98,7 @@ class Main extends PluginBase implements Listener {
   public function onTouch(PlayerInteractEvent $event) {
     $p = $event->getPlayer();
     $i = $event->getItem();
-    if(($i->getID() == $this->item) && ($p->hasPermission("touchhome") || $p->hasPermission("touchhome.home") || $p->hasPermission("touchhome.home.touch"))) {
+    if(($i->getID() == $this->item) && ($p->hasPermission("ourhome") || $p->hasPermission("ourhome.home") || $p->hasPermission("ourhome.home.touch"))) {
       $this->home($p->getName(),$p);
       $event->setCancelled();
     }
@@ -157,7 +157,7 @@ class Main extends PluginBase implements Listener {
     }
   }
   public function onDisable() {
-    $this->getLogger()->info(TextFormat::YELLOW . "Disabling TouchHome...");
+    $this->getLogger()->info(TextFormat::YELLOW . "Disabling OurHome. Not intentional? Contact us!");
   }
 }
 ?>
