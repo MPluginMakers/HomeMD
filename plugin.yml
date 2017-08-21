@@ -1,5 +1,5 @@
 name: OurHome
-main: MPluginMakers\OurHome\main
+main: OurHome\Main
 version: 0.0.1
 api: [3.0.0-ALPHA7]
 load: POSTWORLD
